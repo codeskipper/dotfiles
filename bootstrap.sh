@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
-## Maybe stick to main branch
+## Maybe update main branch from github first
 #git pull origin main;
 
 ## To copy the files/folders (that shouldn't be symlinked) into $HOME
-cd "$(dirname "${BASH_SOURCE}")/HOME";
+cd "$(dirname "${BASH_SOURCE}")";
 
 function doIt() {
 	rsync    --exclude ".DS_Store" \
                  --exclude "DISABLED" \
-		-avh --no-perms . ~;
-	source ~/.bash_profile;
+		-avh --no-perms ./HOME/ ~;
+#	source ~/.bash_profile;
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
@@ -24,8 +24,5 @@ else
 fi;
 unset doIt;
 
-## Now setup the rest
-cd "$(dirname "${BASH_SOURCE}")";
-
-source setup/install.sh
+setup/install.sh
 
