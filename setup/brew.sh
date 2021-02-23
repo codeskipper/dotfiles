@@ -6,6 +6,7 @@
 #ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 # Ruby installer is deprecated and rewritten in bash - so run this instead
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
 # Install command-line tools using Homebrew.
 
 # Make sure we’re using the latest Homebrew.

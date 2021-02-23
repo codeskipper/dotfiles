@@ -8,8 +8,9 @@ cd "$(dirname "${BASH_SOURCE}")";
 
 function doIt() {
 	rsync    --exclude ".DS_Store" \
-                 --exclude "DISABLED" \
+	--exclude "DISABLED" \
 		-avh --no-perms ./HOME/ ~;
+
 #	source ~/.bash_profile;
 }
 
