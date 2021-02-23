@@ -1,16 +1,14 @@
 #!/usr/bin/env bash
 
-cd "$(dirname "${BASH_SOURCE}")";
+## Maybe stick to main branch
+#git pull origin main;
 
-git pull origin main;
+## To copy the files/folders (that shouldn't be symlinked) into $HOME
+cd "$(dirname "${BASH_SOURCE}")/HOME";
 
 function doIt() {
-	rsync --exclude ".git/" \
-		--exclude ".DS_Store" \
-		--exclude ".osx" \
-		--exclude "bootstrap.sh" \
-		--exclude "README.md" \
-		--exclude "LICENSE-MIT.txt" \
+	rsync    --exclude ".DS_Store" \
+                 --exclude "DISABLED" \
 		-avh --no-perms . ~;
 	source ~/.bash_profile;
 }
@@ -25,3 +23,9 @@ else
 	fi;
 fi;
 unset doIt;
+
+## Now setup the rest
+cd "$(dirname "${BASH_SOURCE}")";
+
+source setup/install.sh
+
