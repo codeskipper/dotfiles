@@ -1,49 +1,80 @@
 #!/usr/bin/env bash
 
 # Check if brew is already installed (and in search path)
+
 which -s brew
-if [[ $? != 0 ]] ; then
+if [[ $? != 0 ]]; then
 	# install Homebrew itself
 	#ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	# Ruby installer is deprecated and rewritten in bash - so run this instead
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 	# check install went as planned
-	if [[ $? != 0 ]] ; then
+	if [[ $? != 0 ]]; then
 		echo "Homebrew install did not succeed, aborting remainder of setup scripts"
 		exit 1
 	fi
-	
-	# find default shell profle or resource scipt, macOS treats shells started from GUI (Terminal) as login shell and doesn't source ~/.bashrc like in Linux
-	DEFAULT_SHELL=$(basename "${SHELL}")
-	case $(uname) in
-		'Darwin')  if [[ $DEFAULT_SHELL == "zsh" ]]; then
-				SHELL_RESOURCE="${HOME}/.zshrc"
-			elif [[ $DEFAULT_SHELL == "bash" ]]; then
-				SHELL_RESOURCE="${HOME}/.bash_profile"
-			else 
-				SHELL_RESOURCE="UNKNOWN"
-			fi  
-		;;
-		'Linux') if [[ $DEFAULT_SHELL == "zsh" ]]; then
-                                SHELL_RESOURCE="${HOME}/.zshrc"
-                        elif [[ $DEFAULT_SHELL == "bash" ]]; then
-                                SHELL_RESOURCE="${HOME}/.bashrc"
-                        else 
-                                SHELL_RESOURCE="UNKNOWN"
-                        fi 
 
-		;;
-		*) SHELL_RESOURCE="UNKNOWN"
-		;;
-	esac
-	if [[ SHELL_RESOURCE == "UNKNOWN" ]]; then
-		echo "This script doesn't (yet) know how to add brew paths to the default shell resource file in your OS."
-                echo "You may add those paths manually using the suggestions from the Homebrew installer script above."
-                echo "Aborting remainder of setup scripts. You can re-run after adding Homebrew search paths to your config manually."
-		exit 1
-	else
-		echo 'eval $('"$(which brew)"' shellenv)' >> $SHELL_RESOURCE
+	# Check if Homebrew got installed in the search path, on Silicon M1 Macs it does not by default
+	if [[ ! $(which -s brew) ]]; then
+		brewcmd="/usr/local/bin/brew"
+		if [[ ! -x "$brewcmd" ]]; then
+			brewcmd="/opt/homebrew/bin/brew"
+			if [[ ! -x "$brewcmd" ]]; then
+				brewcmd="/home/linuxbrew/.linuxbrew/bin/brew"
+				if [[ ! -x "$brewcmd" ]]; then
+					echo "Homebrew not found in a default path after install, panic, exiting"
+					exit 1
+				fi
+			fi
+		fi
+		echo "Homebrew command found at $brewcmd"
+
+		# find default shell profle or resource scipt, macOS treats shells started from GUI (Terminal) as login shell and doesn't source ~/.bashrc like in Linux
+		DEFAULT_SHELL=$(basename "${SHELL}")
+		case $(uname) in
+			'Darwin')  if [[ $DEFAULT_SHELL == "zsh" ]]; then
+					SHELL_RESOURCE="${HOME}/.zshrc"
+				elif [[ $DEFAULT_SHELL == "bash" ]]; then
+					SHELL_RESOURCE="${HOME}/.bash_profile"
+				else
+					SHELL_RESOURCE="UNKNOWN"
+				fi
+			;;
+			'Linux') if [[ $DEFAULT_SHELL == "zsh" ]]; then
+					SHELL_RESOURCE="${HOME}/.zshrc"
+				elif [[ $DEFAULT_SHELL == "bash" ]]; then
+					SHELL_RESOURCE="${HOME}/.bashrc"
+				else
+					SHELL_RESOURCE="UNKNOWN"
+				fi
+
+			;;
+			*) SHELL_RESOURCE="UNKNOWN"
+			;;
+		esac
+		if [[ SHELL_RESOURCE == "UNKNOWN" ]]; then
+			echo "This script doesn't (yet) know how to add brew paths to the default shell resource file in your OS."
+			echo "You may add those paths manually using the suggestions from the Homebrew installer script above."
+			echo "Aborting remainder of setup scripts. You can re-run after adding Homebrew search paths to your config manually."
+			exit 1
+		else
+			echo "Found your default shell to be: $DEFAULT_SHELL"
+			echo "So appending Homebrew search paths lookup to it's resource file at $SHELL_RESOURCE"
+			echo "appending the following:"
+			echo  '    eval $('"$brewcmd"' shellenv)'
+			echo 'eval $('"$brewcmd"' shellenv)' >> $SHELL_RESOURCE
+			echo "which will expand to this:"
+			echo "$($brewcmd shellenv)"
+			echo "Now sourcing the file to apply to this shell session"
+			source $SHELL_RESOURCE
+			# check path setup went as planned
+			if [[ $? != 0 || ! $(which -s brew) ]]; then
+				echo "Failed to apply the path settings for Homebrew to your shell, bailing out."
+				exit 1
+			fi
+
+		fi
 	fi
 else
 	# Make sure we’re using the latest Homebrew.
@@ -185,3 +216,4 @@ xattr -d -r com.apple.quarantine ~/Library/QuickLook
 
 # Remove outdated versions from the cellar.
 brew cleanup
+
