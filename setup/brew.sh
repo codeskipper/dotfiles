@@ -154,17 +154,20 @@ sleep 1
 echo "Success! Basic brew packages are installed."
 
 # Install cask packages
+brew install --cask --appdir="/Applications" microsoft-outlook
+brew install --cask --appdir="/Applications" microsoft-teams
+brew install --cask --appdir="/Applications" 1password
+brew install --cask --appdir="/Applications" bbedit
+brew install --cask --appdir="/Applications" filemaker-pro
 brew install --cask --appdir="/Applications" the-unarchiver
 brew install --cask --appdir="/Applications" iterm2
 brew install --cask --appdir="/Applications" slack
 brew install --cask --appdir="/Applications" google-chrome
 brew install --cask --appdir="/Applications" firefox
-brew install --cask --appdir="/Applications" spectacle
-
-
+#brew install --cask --appdir="/Applications" spectacle
 
 # Quick Look Plugins (https://github.com/sindresorhus/quick-look-plugins)
-brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql qlimagesize webpquicklook qlvideo
+brew install --cask qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql qlimagesize webpquicklook qlvideo
 xattr -d -r com.apple.quarantine ~/Library/QuickLook
 
 
