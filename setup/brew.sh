@@ -154,12 +154,12 @@ sleep 1
 echo "Success! Basic brew packages are installed."
 
 # Install cask packages
-brew cask install --appdir="/Applications" the-unarchiver
-brew cask install --appdir="/Applications" iterm2
-brew cask install --appdir="/Applications" slack
-brew cask install --appdir="/Applications" google-chrome
-brew cask install --appdir="/Applications" firefox
-brew cask install --appdir="/Applications" spectacle
+brew install --cask --appdir="/Applications" the-unarchiver
+brew install --cask --appdir="/Applications" iterm2
+brew install --cask --appdir="/Applications" slack
+brew install --cask --appdir="/Applications" google-chrome
+brew install --cask --appdir="/Applications" firefox
+brew install --cask --appdir="/Applications" spectacle
 
 
 
