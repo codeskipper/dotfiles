@@ -1,19 +1,59 @@
 #!/usr/bin/env bash
 
+# Check if brew is already installed (and in search path)
+which -s brew
+if [[ $? != 0 ]] ; then
+	# install Homebrew itself
+	#ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	# Ruby installer is deprecated and rewritten in bash - so run this instead
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-## install Homebrew itself
-# ToDo: write check to skip install if brew is already there
-#ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-# Ruby installer is deprecated and rewritten in bash - so run this instead
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+	# check install went as planned
+	if [[ $? != 0 ]] ; then
+		echo "Homebrew install did not succeed, aborting remainder of setup scripts"
+		exit 1
+	fi
+	
+	# find default shell profle or resource scipt, macOS treats shells started from GUI (Terminal) as login shell and doesn't source ~/.bashrc like in Linux
+	DEFAULT_SHELL=$(basename "${SHELL}")
+	case $(uname) in
+		'Darwin')  if [[ $DEFAULT_SHELL == "zsh" ]]; then
+				SHELL_RESOURCE="${HOME}/.zshrc"
+			elif [[ $DEFAULT_SHELL == "bash" ]]; then
+				SHELL_RESOURCE="${HOME}/.bash_profile"
+			else 
+				SHELL_RESOURCE="UNKNOWN"
+			fi  
+		;;
+		'Linux') if [[ $DEFAULT_SHELL == "zsh" ]]; then
+                                SHELL_RESOURCE="${HOME}/.zshrc"
+                        elif [[ $DEFAULT_SHELL == "bash" ]]; then
+                                SHELL_RESOURCE="${HOME}/.bashrc"
+                        else 
+                                SHELL_RESOURCE="UNKNOWN"
+                        fi 
+
+		;;
+		*) SHELL_RESOURCE="UNKNOWN"
+		;;
+	esac
+	if [[ SHELL_RESOURCE == "UNKNOWN" ]]; then
+		echo "This script doesn't (yet) know how to add brew paths to the default shell resource file in your OS."
+                echo "You may add those paths manually using the suggestions from the Homebrew installer script above."
+                echo "Aborting remainder of setup scripts. You can re-run after adding Homebrew search paths to your config manually."
+		exit 1
+	else
+		echo 'eval $('"$(which brew)"' shellenv)' >> $SHELL_RESOURCE
+	fi
+else
+	# Make sure we’re using the latest Homebrew.
+	brew update
+
+	# Upgrade any already-installed formulae.
+	brew upgrade
+fi
 
 # Install command-line tools using Homebrew.
-
-# Make sure we’re using the latest Homebrew.
-brew update
-
-# Upgrade any already-installed formulae.
-brew upgrade
 
 # Save Homebrew’s installed location.
 BREW_PREFIX=$(brew --prefix)
