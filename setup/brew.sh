@@ -157,6 +157,8 @@ echo "Success! Basic brew packages are installed."
 brew install --cask --appdir="/Applications" microsoft-outlook
 brew install --cask --appdir="/Applications" microsoft-teams
 brew install --cask --appdir="/Applications" 1password
+brew install --cask --appdir="/Applications" alfred
+brew install --cask --appdir="/Applications" bettertouchtool
 brew install --cask --appdir="/Applications" bbedit
 brew install --cask --appdir="/Applications" filemaker-pro
 brew install --cask --appdir="/Applications" the-unarchiver
@@ -165,9 +167,15 @@ brew install --cask --appdir="/Applications" slack
 brew install --cask --appdir="/Applications" google-chrome
 brew install --cask --appdir="/Applications" firefox
 #brew install --cask --appdir="/Applications" spectacle
+brew install --cask --appdir="/Applications" betterzip
+brew install --cask --appdir="/Applications" suspicious-package
+brew install --cask --appdir="/Applications" apparency
+brew install --cask --appdir="/Applications" autopkgr
+brew install --cask --appdir="/Applications" munkiadmin
+
 
 # Quick Look Plugins (https://github.com/sindresorhus/quick-look-plugins)
-brew install --cask qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql qlimagesize webpquicklook qlvideo
+brew install --cask qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv qlimagesize webpquicklook qlvideo
 xattr -d -r com.apple.quarantine ~/Library/QuickLook
 
 

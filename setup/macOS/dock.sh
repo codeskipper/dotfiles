@@ -12,8 +12,8 @@ defaults write com.apple.Dock autohide-delay -float 0
 dockutil --no-restart --remove all
 dockutil --no-restart --add "/System/Applications/Messages.app"
 dockutil --no-restart --add "/Applications/Safari.app"
-dockutil --no-restart --add "/Applications/Microsoft\ Outlook.app"
-dockutil --no-restart --add "/Applications/Microsoft\ Teams.app"
+dockutil --no-restart --add "/Applications/Microsoft\Outlook.app"
+dockutil --no-restart --add "/Applications/Microsoft\Teams.app"
 #dockutil --no-restart --add "/Applications/Firefox.app"
 #dockutil --no-restart --add "/Applications/Google Chrome.app"
 dockutil --no-restart --add "/Applications/Sourcetree.app"
@@ -22,7 +22,7 @@ dockutil --no-restart --add "/Applications/Sourcetree.app"
 #dockutil --no-restart --add "/Applications/KeeWeb.app"
 #dockutil --no-restart --add "/Applications/Sketch.app"
 dockutil --no-restart --add "/Applications/Slack.app"
-dockutil --no-restart --add "/System/Applications/Calendar.app"
+#dockutil --no-restart --add "/System/Applications/Calendar.app"
 dockutil --no-restart --add "/System/Applications/Utilities/Terminal.app"
 
 killall Dock
