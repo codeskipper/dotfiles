@@ -26,6 +26,7 @@ dockutil --no-restart --add "/Applications/Slack.app"
 #dockutil --no-restart --add "/System/Applications/Calendar.app"
 dockutil --no-restart --add "/System/Applications/Utilities/Terminal.app"
 [[ -e /Applications/Privileges.app ]] && dockutil --no-restart --add "/Applications/Privileges.app"
+dockutil --no-restart --add "~/Downloads"
 
 killall Dock
 

@@ -100,7 +100,8 @@ BREW_PREFIX=$(brew --prefix)
 #brew install woff2
 
 ## Install some fonts
-brew install font-source-code-pro
+brew tap homebrew/cask-fonts
+brew install --cask font-source-code-pro
 
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
 #brew install aircrack-ng
