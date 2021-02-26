@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "setup/defaults.sh - Setting up your macOS initial settings with some defaults write commands"
- Forked and adapted from ~/.macos — https://mths.be/macos
+# Forked and adapted from ~/.macos — https://mths.be/macos
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change

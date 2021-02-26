@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "setup/brew.sh installing Homebrew is needed, and installing your standard formulae and casks"
+echo "setup/brew.sh installing Homebrew if needed, and installing your standard formulae and casks"
 # Check if brew is already installed (and in search path)
 which -s brew
 if [[ $? != 0 ]]; then

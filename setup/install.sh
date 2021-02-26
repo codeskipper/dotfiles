@@ -17,10 +17,6 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
 # Bunch of symlinks
 source "$DOTFILES_DIR/setup/symlinks.sh"
 
-# Setup macos defaults and add apps to dock
-source "$DOTFILES_DIR/setup/macOS/defaults.sh"
-source "$DOTFILES_DIR/setup/macOS/dock.sh"
-
 # Vscode extensions
 #. "$DOTFILES_DIR/vscode/extensions.sh"
 
@@ -32,4 +28,11 @@ source "$DOTFILES_DIR/setup/macOS/dock.sh"
 
 # Add keys from keychain to ssh agent
 #ssh-add -A 2>/dev/null;
-echo "setup/install.sh script done"
+
+# Setup macos defaults and add apps to dock
+source "$DOTFILES_DIR/setup/macOS/dock.sh"
+# macOS defaults.sh must run last as it kills affected apps including Terminals after adjusting their settings
+source "$DOTFILES_DIR/setup/macOS/defaults.sh"
+
+
+#echo "setup/install.sh script done"
