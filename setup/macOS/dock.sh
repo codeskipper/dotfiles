@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
+echo "setup/dock.sh Setting up your Dock"
 
 # Set the icon size of Dock items to 35 pixels
 defaults write com.apple.dock tilesize -int 35
@@ -30,4 +32,4 @@ dockutil --no-restart --add "~/Downloads"
 
 killall Dock
 
-echo "Success! Dock is set."
+echo "setup/dock.sh done setting up your Dock."

@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
 ## Maybe update main branch from github first
-#git pull origin main;
+git pull origin
 
 ## To copy the files/folders (that shouldn't be symlinked) into $HOME
+echo "Setting out to copy dotfiles from repo into your home folder"
 cd "$(dirname "${BASH_SOURCE}")";
 
 function doIt() {
@@ -25,5 +26,7 @@ else
 fi;
 unset doIt;
 
-setup/install.sh
+echo "Dotfiles copy done."
+
+source setup/install.sh
 

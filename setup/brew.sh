@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
+echo "setup/brew.sh installing Homebrew is needed, and installing your standard formulae and casks"
 # Check if brew is already installed (and in search path)
-
 which -s brew
 if [[ $? != 0 ]]; then
 	# install Homebrew itself
@@ -216,4 +216,6 @@ xattr -d -r com.apple.quarantine ~/Library/QuickLook
 
 # Remove outdated versions from the cellar.
 brew cleanup
+
+echo "setup/brew.sh done Homebrewing"
 

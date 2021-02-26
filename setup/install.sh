@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+
+echo "setup/install.sh script starting to update your settings to those from the dotfiles repo"
+
 export DOTFILES_DIR EXTRA_DIR
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
 
@@ -11,11 +15,11 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
 #curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 
 # Bunch of symlinks
-. "$DOTFILES_DIR/setup/symlinks.sh"
+source "$DOTFILES_DIR/setup/symlinks.sh"
 
 # Setup macos defaults and add apps to dock
-. "$DOTFILES_DIR/setup/macOS/defaults.sh"
-. "$DOTFILES_DIR/setup/macOS/dock.sh"
+source "$DOTFILES_DIR/setup/macOS/defaults.sh"
+source "$DOTFILES_DIR/setup/macOS/dock.sh"
 
 # Vscode extensions
 #. "$DOTFILES_DIR/vscode/extensions.sh"
@@ -28,3 +32,4 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
 
 # Add keys from keychain to ssh agent
 #ssh-add -A 2>/dev/null;
+echo "setup/install.sh script done"
