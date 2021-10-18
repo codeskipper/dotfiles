@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 
 echo "setup/brew.sh installing Homebrew if needed, and installing your standard formulae and casks"
+
+# workaround for known issue with permissions of shared zsh resources that prevents
+# https://github.com/Homebrew/discussions/discussions/600#discussioncomment-305652
+#Error: Failed to link all completions, docs and manpages:
+#Permission denied @ rb_file_s_symlink - (../../../Homebrew/completions/zsh/_brew, /usr/local/share/zsh/site-functions/_brew)
+#Failed during: /usr/local/bin/brew update --force --quiet
+sudo chown -R $(whoami): /usr/local/share/zsh
+
 # Check if brew is already installed (and in search path)
 which -s brew
 if [[ $? != 0 ]]; then
@@ -14,6 +22,7 @@ if [[ $? != 0 ]]; then
 		echo "Homebrew install did not succeed, aborting remainder of setup scripts"
 		exit 1
 	fi
+
 
 	# Check if Homebrew got installed in the search path, on Silicon M1 Macs it does not by default
 	if [[ ! $(which -s brew) ]]; then

@@ -2,16 +2,19 @@
 
 ![Screenshot of my shell prompt](https://i.imgur.com/EkEtphC.png)
 
-## Forked 
-This is my personal adaptation of Mac centric peronalization scripts, forked from from https://github.com/mathiasbynens/dotfiles
+## Forked
+This is my personal adaptation of Mac centric personalisation scripts, forked from from https://github.com/mathiasbynens/dotfiles
 
 ## Installation
 
 **Warning:** If you want to give these dotfiles a try, you should first fork this repository, review the code, and remove things you don’t want or need. Don’t blindly use my settings unless you know what that entails. Use at your own risk!
 
+On a newly installed Mac, you need to install Git first, running the command will trigger a download prompt
+```git
+```
 ### Using Git and the bootstrap script
 
-You can clone the repository wherever you want. (I like to keep it in `~/Projects/dotfiles`, with `~/dotfiles` as a symlink.) The bootstrapper script will pull in the latest version and copy the files to your home folder.
+You can clone the repository wherever you want. (I like to keep it in `~/dev/dotfiles`) The bootstrapper script will pull in the latest version and copy the files to your home folder.
 
 ```bash
 git clone https://github.com/codeskipper/dotfiles.git && cd dotfiles && source bootstrap.sh
@@ -86,6 +89,11 @@ setup/brew.sh
 ```
 
 Some of the functionality of these dotfiles depends on formulae installed by `brew.sh`. If you don’t plan to run `brew.sh`, you should look carefully through the script and manually install any particularly important ones. A good example is Bash/Git completion: the dotfiles use a special version from Homebrew.
+
+## ToDo
+- System Preferences, General, Prefer tabs -> set to (never) when opening documents (default: in full screen)
+- secondary-click with right mouse button - scripting this setting appears to be not supported, still looking for workaround
+
 
 ## Feedback
 
