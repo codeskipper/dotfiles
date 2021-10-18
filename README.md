@@ -9,7 +9,8 @@ This is my personal adaptation of Mac centric personalisation scripts, forked fr
 
 **Warning:** If you want to give these dotfiles a try, you should first fork this repository, review the code, and remove things you don’t want or need. Don’t blindly use my settings unless you know what that entails. Use at your own risk!
 
-On a newly installed Mac, you need to install Git first, running the command will trigger a download prompt
+### On a newly installed Mac...
+...you need to install Git first, running the command will trigger a download prompt
 ```git
 ```
 ### Using Git and the bootstrap script
