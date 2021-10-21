@@ -93,6 +93,8 @@ Some of the functionality of these dotfiles depends on formulae installed by `br
 
 ## ToDo
 - System Preferences, General, Prefer tabs -> set to (never) when opening documents (default: in full screen)
+- Safari Preferences, Tabs, Open pages in tabs instead of windows -> Never (default Automatic)
+- Safari Preferences, Tabs, When a new tab or window opens, make it active -> enable (default disabled)
 - secondary-click with right mouse button - scripting this setting appears to be not supported, still looking for workaround
 
 

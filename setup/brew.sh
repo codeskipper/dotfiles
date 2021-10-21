@@ -2,7 +2,7 @@
 
 echo "setup/brew.sh installing Homebrew if needed, and installing your standard formulae and casks"
 
-# workaround for known issue with permissions of shared zsh resources that prevents
+# workaround for known issue with permissions of shared zsh resources that prevents Brew from updating
 # https://github.com/Homebrew/discussions/discussions/600#discussioncomment-305652
 #Error: Failed to link all completions, docs and manpages:
 #Permission denied @ rb_file_s_symlink - (../../../Homebrew/completions/zsh/_brew, /usr/local/share/zsh/site-functions/_brew)
@@ -139,6 +139,9 @@ BREW_PREFIX=$(brew --prefix)
 #brew install sfnt2woff-zopfli
 #brew install woff2
 
+# we need this for installing font-source-code-pro
+brew install svn
+
 ## Install some fonts
 brew tap homebrew/cask-fonts
 brew install --cask font-source-code-pro
@@ -216,7 +219,7 @@ brew install --cask --appdir="/Applications" suspicious-package
 brew install --cask --appdir="/Applications" apparency
 brew install --cask --appdir="/Applications" autopkgr
 brew install --cask --appdir="/Applications" munkiadmin
-
+brew install --cask --appdir="/Applications" mactracker
 
 # Quick Look Plugins (https://github.com/sindresorhus/quick-look-plugins)
 brew install --cask qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv qlimagesize webpquicklook qlvideo

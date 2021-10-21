@@ -6,10 +6,13 @@ echo "setup/dock.sh Setting up your Dock"
 defaults write com.apple.dock tilesize -int 35
 
 # Set the dock to NOT autohide
-defaults write com.apple.Dock autohide 0
+defaults write com.apple.Dock autohide 1
+
+# Set the dock to use Magnification
+defaults write com.apple.Dock magnification 1
 
 # Set the dock autohide delay to 0
-defaults write com.apple.Dock autohide-delay -float 0.5
+defaults write com.apple.Dock autohide-delay -float 0.1
 
 dockutil --no-restart --remove all
 dockutil --no-restart --add "/System/Applications/Launchpad.app"
