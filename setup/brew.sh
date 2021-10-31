@@ -146,6 +146,10 @@ brew install svn
 brew tap homebrew/cask-fonts
 brew install --cask font-source-code-pro
 
+# Need the MS font Calibri for FileMaker
+brew tap colindean/fonts-nonfree
+brew cask install font-microsoft-office
+
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
 #brew install aircrack-ng
 #brew install bfg
