@@ -229,6 +229,9 @@ brew install --cask --appdir="/Applications" mactracker
 brew install --cask qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv qlimagesize webpquicklook qlvideo
 xattr -d -r com.apple.quarantine ~/Library/QuickLook
 
+# Git credential manager core
+brew tap microsoft/git
+brew install --cask git-credential-manager-core
 
 # Remove outdated versions from the cellar.
 brew cleanup
