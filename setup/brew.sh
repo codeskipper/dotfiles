@@ -155,7 +155,7 @@ brew install --cask font-source-code-pro
 
 # Need the MS font Calibri for FileMaker
 brew tap colindean/fonts-nonfree
-brew  install --cask font-microsoft-office
+brew  install -- cask font-microsoft-office
 
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
 #brew install aircrack-ng
@@ -238,7 +238,8 @@ xattr -d -r com.apple.quarantine ~/Library/QuickLook
 
 # Git credential manager core
 brew tap microsoft/git
-brew install --cask git-credential-manager-core
+#brew install --cask git-credential-manager-core
+brew install --cask git-credential-manager
 
 # Remove outdated versions from the cellar.
 brew cleanup
