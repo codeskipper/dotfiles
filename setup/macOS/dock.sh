@@ -5,11 +5,11 @@ echo "setup/dock.sh Setting up your Dock"
 # Set the icon size of Dock items to 35 pixels
 defaults write com.apple.dock tilesize -int 35
 
-# Set the dock to NOT autohide
-defaults write com.apple.Dock autohide 1
+# Set the dock to autohide
+defaults write com.apple.Dock autohide 0
 
 # Set the dock to use Magnification
-defaults write com.apple.Dock magnification 1
+defaults write com.apple.Dock magnification 0
 
 # Set the dock autohide delay to 0
 defaults write com.apple.Dock autohide-delay -float 0.1

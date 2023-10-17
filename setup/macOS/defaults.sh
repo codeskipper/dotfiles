@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
-echo "setup/defaults.sh - Setting up your macOS initial settings with some defaults write commands"
+echo "setup/defaults.sh - Setting up your macOS initial settings with some defaults write commands..."
 # Forked and adapted from ~/.macos — https://mths.be/macos
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
-osascript -e 'tell application "System Preferences" to quit'
+# osascript -e 'tell application "System Preferences" to quit'
+osascript -e 'tell application "System Settings" to quit'
+
 
 # Ask for the administrator password upfront
 sudo -v
@@ -128,7 +130,7 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 #defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 # Trackpad: map bottom right corner to right-click
-#defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2# 
+#defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2#
 # codeskipper: map bottom-right corner two finger click to secondary click
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 0
 

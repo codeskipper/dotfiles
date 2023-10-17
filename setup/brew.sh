@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
-echo "setup/brew.sh installing Homebrew if needed, and installing your standard formulae and casks"
+echo "setup/brew.sh installing Homebrew if needed, and installing your standard formulae and casks..."
+echo "...please enter your password to allow sudo for the above? "
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # workaround for known issue with permissions of shared zsh resources that prevents Brew from updating
 # https://github.com/Homebrew/discussions/discussions/600#discussioncomment-305652
@@ -43,7 +49,7 @@ if [[ $? != 0 ]]; then
 		DEFAULT_SHELL=$(basename "${SHELL}")
 		case $(uname) in
 			'Darwin')  if [[ $DEFAULT_SHELL == "zsh" ]]; then
-					SHELL_RESOURCE="${HOME}/.zshrc"
+					SHELL_RESOURCE="${HOME}/.zprofile"
 				elif [[ $DEFAULT_SHELL == "bash" ]]; then
 					SHELL_RESOURCE="${HOME}/.bash_profile"
 				else
@@ -72,7 +78,8 @@ if [[ $? != 0 ]]; then
 			echo "So appending Homebrew search paths lookup to it's resource file at $SHELL_RESOURCE"
 			echo "appending the following:"
 			echo  '    eval $('"$brewcmd"' shellenv)'
-			echo 'eval $('"$brewcmd"' shellenv)' >> $SHELL_RESOURCE
+			# echo 'eval $('"$brewcmd"' shellenv)' >> $SHELL_RESOURCE
+			eval "$($brewcmd shellenv)" >> $SHELL_RESOURCE
 			echo "which will expand to this:"
 			echo "$($brewcmd shellenv)"
 			echo "Now sourcing the file to apply to this shell session"
@@ -148,7 +155,7 @@ brew install --cask font-source-code-pro
 
 # Need the MS font Calibri for FileMaker
 brew tap colindean/fonts-nonfree
-brew cask install font-microsoft-office
+brew  install --cask font-microsoft-office
 
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
 #brew install aircrack-ng
