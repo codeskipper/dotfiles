@@ -201,15 +201,15 @@ brew install p7zip
 brew install tree
 #brew install vbindiff
 #brew install zopfli
-brew install dockutil
-brew install wifi-password
+#brew install dockutil # dockutil v.3 is no longer a script but a swift binary, there is no cask (yet)
+#brew install wifi-password
 
 
 # Wait a bit before moving on...
 sleep 1
 
 # ...and then.
-echo "Success! Basic brew packages are installed."
+echo "Success! Basic brew formulae are installed."
 
 # Install cask packages
 brew install --cask --appdir="/Applications" microsoft-outlook
@@ -218,14 +218,15 @@ brew install --cask --appdir="/Applications" 1password
 brew install --cask --appdir="/Applications" alfred
 brew install --cask --appdir="/Applications" bettertouchtool
 brew install --cask --appdir="/Applications" bbedit
+brew install --cask --appdir="/Applications" pycharm-ce
 #brew install --cask --appdir="/Applications" filemaker-pro
 brew install --cask --appdir="/Applications" the-unarchiver
 brew install --cask --appdir="/Applications" iterm2
 brew install --cask --appdir="/Applications" slack
-#brew install --cask --appdir="/Applications" google-chrome
+brew install --cask --appdir="/Applications" google-chrome
 #brew install --cask --appdir="/Applications" firefox
 #brew install --cask --appdir="/Applications" spectacle
-brew install --cask --appdir="/Applications" betterzip
+#brew install --cask --appdir="/Applications" betterzip
 brew install --cask --appdir="/Applications" suspicious-package
 brew install --cask --appdir="/Applications" apparency
 brew install --cask --appdir="/Applications" autopkgr
