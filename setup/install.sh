@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
+
+
 echo "setup/install.sh script starting to update your settings to those from the dotfiles repo"
+
 
 export DOTFILES_DIR EXTRA_DIR
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"

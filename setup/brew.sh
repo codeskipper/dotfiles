@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-echo "setup/brew.sh installing Homebrew if needed, and installing your standard formulae and casks..."
-echo "...please enter your password to allow sudo for the above? "
+log "setup/brew.sh installing Homebrew if needed, and installing your standard formulae and casks..."
+log "...please enter your password to allow sudo for the above? "
 # Ask for the administrator password upfront
 sudo -v
 
@@ -155,7 +155,7 @@ brew install --cask font-source-code-pro
 
 # Need the MS font Calibri for FileMaker
 brew tap colindean/fonts-nonfree
-brew  install -- cask font-microsoft-office
+brew  install --cask font-microsoft-office
 
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
 #brew install aircrack-ng
@@ -245,5 +245,25 @@ brew install --cask git-credential-manager
 # Remove outdated versions from the cellar.
 brew cleanup
 
-echo "setup/brew.sh done Homebrewing"
+log "setup/brew.sh done Homebrewing"
+
+if [ ! "$( which dockutil )" ]; then
+curl --location --output-dir "$HOME/Downloads" -O https://github.com/kcrawford/dockutil/releases/download/3.0.2/dockutil-3.0.2.pkg
+		if ! echo "175137ea747e83ed221d60b18b712b256ed31531534cde84f679487d337668fd *$HOME/Downloads/dockutil-3.0.2.pkg" | shasum -a 256 -c ; then
+				echo "Downloaded dockutil installer package checksum does NOT match - bailing out."
+				exit 1
+		else
+				sudo installer -pkg "$HOME/Downloads/dockutil-3.0.2.pkg" -target /
+		fi
+fi
+
+# favorite packaging tool:
+if [ ! "$(which munkipkg)" ]; then
+	if [ ! -f "$dev_main/munki-pkg" ]; then
+		git clone https://github.com/munki/munki-pkg.git
+	fi
+	cd munki-pkg
+	sudo cp munkipkg /usr/local/bin/
+		[[ $? ]] && log "added munki-pkg to /usr/local/bin/" || log "adding added munki-pkg to /usr/local/bin/ FAILED"
+fi
 
