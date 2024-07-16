@@ -25,6 +25,7 @@ dockutil --no-restart --add "/Applications/Microsoft Teams.app"
 #dockutil --no-restart --add "/Applications/Sourcetree.app"
 [[ -e "/Applications/BBEdit.app" ]] && dockutil --no-restart --add "/Applications/BBEdit.app"
 [[ -e "/Applications/Visual Studio Code.app" ]] && dockutil --no-restart --add "/Applications/Visual Studio Code.app"
+[[ -e "/Applications/PyCharm CE.app" ]] && dockutil --no-restart --add "/Applications/PyCharm CE.app"
 
 dockutil --no-restart --add "/Applications/Slack.app"
 #dockutil --no-restart --add "/System/Applications/Calendar.app"

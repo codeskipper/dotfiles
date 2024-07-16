@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ## Maybe update main branch from github first
-git pull origin
+# git pull origin
 
 ## To copy the files/folders (that shouldn't be symlinked) into $HOME
 echo "Setting out to copy dotfiles from repo into your home folder"

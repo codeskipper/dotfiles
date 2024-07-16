@@ -5,8 +5,12 @@ echo "setup/install.sh script starting to update your settings to those from the
 export DOTFILES_DIR EXTRA_DIR
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
 
+# ensure XCode CommandLine tools are installed, use installer script by Graham Pugh and Rich Trouton
+# https://raw.githubusercontent.com/autopkg/grahampugh-recipes/main/_Scripts/XcodeCommandLineTools-install.sh
+source "$DOTFILES_DIR/setup/macOS/XcodeCommandLineTools-install.sh"
+
 # Install brew with packages & casks, composer and yarn global packages
-. "$DOTFILES_DIR/setup/brew.sh"
+source "$DOTFILES_DIR/setup/brew.sh"
 
 # Install Oh my ZSH
 #sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
