@@ -10,7 +10,7 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
 
 # ensure XCode CommandLine tools are installed, use installer script by Graham Pugh and Rich Trouton
 # https://raw.githubusercontent.com/autopkg/grahampugh-recipes/main/_Scripts/XcodeCommandLineTools-install.sh
-source "$DOTFILES_DIR/setup/macOS/XcodeCommandLineTools-install.sh"
+$DOTFILES_DIR/setup/macOS/XcodeCommandLineTools-install.sh
 
 # Install brew with packages & casks, composer and yarn global packages
 source "$DOTFILES_DIR/setup/brew.sh"
