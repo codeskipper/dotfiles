@@ -200,6 +200,7 @@ brew install p7zip
 # brew install ssh-copy-id
 brew install tree
 # brew install vbindiff
+
 # brew install zopfli
 brew install dockutil
 brew install wifi-password
@@ -212,28 +213,33 @@ sleep 1
 echo "Success! Basic brew packages are installed."
 
 # Install cask packages
-brew install --cask --appdir="/Applications" microsoft-outlook
-brew install --cask --appdir="/Applications" microsoft-teams
+# brew install --cask --appdir="/Applications" microsoft-outlook
+# brew install --cask --appdir="/Applications" microsoft-teams
 brew install --cask --appdir="/Applications" 1password
 brew install --cask --appdir="/Applications" alfred
 brew install --cask --appdir="/Applications" bettertouchtool
 brew install --cask --appdir="/Applications" bbedit
-brew install --cask --appdir="/Applications" pycharm-ce
-# brew install --cask --appdir="/Applications" filemaker-pro
-brew install --cask --appdir="/Applications" the-unarchiver
+# brew install --cask --appdir="/Applications" pycharm-ce
+brew install --cask --appdir="/Applications" filemaker-pro
+# brew install --cask --appdir="/Applications" the-unarchiver
 brew install --cask --appdir="/Applications" iterm2
-brew install --cask --appdir="/Applications" slack
+# brew install --cask --appdir="/Applications" slack
 # brew install --cask --appdir="/Applications" google-chrome
 # brew install --cask --appdir="/Applications" firefox
 # brew install --cask --appdir="/Applications" spectacle
-brew install --cask --appdir="/Applications" betterzip
-brew install --cask --appdir="/Applications" suspicious-package
+# brew install --cask --appdir="/Applications" betterzip
+# brew install --cask --appdir="/Applications" suspicious-package
 brew install --cask --appdir="/Applications" apparency
 # brew install --cask --appdir="/Applications" autopkgr
 brew install --cask --appdir="/Applications" munkiadmin
 brew install --cask --appdir="/Applications" mactracker
-brew install --cask --appdir="/Applications" jordanbaird-ice
-# brew install --cask --no-quarantine --appdir="/Applications" brew install mhaeuser/mhaeuser/battery-toolkit
+brew install --cask --appdir="/Applications" imazing-profile-editor
+brew install --cask --appdir="/Applications" mist
+brew install --cask --appdir="/Applications" signal
+brew install --cask --appdir="/Applications" whatsapp
+brew install --cask --appdir="/Applications" zoom
+brew install --cask --no-quarantine --appdir="/Applications" brew install mhaeuser/mhaeuser/battery-toolkit
+brew install --cask --appdir="$HOME/Applications" jordanbaird-ice
 
 
 # Quick Look Plugins sadly no longer work on Apple Silicon M* (https://github.com/sindresorhus/quick-look-plugins)
