@@ -3,17 +3,17 @@
 echo "setup/brew.sh installing Homebrew if needed, and installing your standard formulae and casks..."
 echo "...please enter your password to allow sudo for the above? "
 # Ask for the administrator password upfront
-sudo -v
+# sudo -v
 
 # Keep-alive: update existing `sudo` time stamp until `.macos` has finished
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+# while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # workaround for known issue with permissions of shared zsh resources that prevents Brew from updating
 # https://github.com/Homebrew/discussions/discussions/600#discussioncomment-305652
 #Error: Failed to link all completions, docs and manpages:
 #Permission denied @ rb_file_s_symlink - (../../../Homebrew/completions/zsh/_brew, /usr/local/share/zsh/site-functions/_brew)
 #Failed during: /usr/local/bin/brew update --force --quiet
-sudo chown -R $(whoami): /usr/local/share/zsh
+#sudo chown -R $(whoami): /usr/local/share/zsh
 
 # Check if brew is already installed (and in search path)
 which -s brew
@@ -232,6 +232,9 @@ brew install --cask --appdir="/Applications" apparency
 # brew install --cask --appdir="/Applications" autopkgr
 brew install --cask --appdir="/Applications" munkiadmin
 brew install --cask --appdir="/Applications" mactracker
+brew install --cask --appdir="/Applications" jordanbaird-ice
+# brew install --cask --no-quarantine --appdir="/Applications" brew install mhaeuser/mhaeuser/battery-toolkit
+
 
 # Quick Look Plugins sadly no longer work on Apple Silicon M* (https://github.com/sindresorhus/quick-look-plugins)
 # brew install --cask qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv qlimagesize webpquicklook qlvideo
