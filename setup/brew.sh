@@ -45,7 +45,7 @@ if [[ $? != 0 ]]; then
 		fi
 		echo "Homebrew command found at $brewcmd"
 
-		# find default shell profle or resource scipt, macOS treats shells started from GUI (Terminal) as login shell and doesn't source ~/.bashrc like in Linux
+		# find default shell profile or resource script, macOS treats shells started from GUI (Terminal) as login shell and doesn't source ~/.bashrc like in Linux
 		DEFAULT_SHELL=$(basename "${SHELL}")
 		case $(uname) in
 			'Darwin')  if [[ $DEFAULT_SHELL == "zsh" ]]; then
@@ -205,6 +205,11 @@ brew install tree
 brew install dockutil
 brew install wifi-password
 
+# install brew autoupdate, pinentry-mac, and set it up to update everything, including ALL casks
+# every 12 hrs and prompt for sudo if needed
+brew tap domt4/autoupdate
+brew install pinentry-mac
+brew autoupdate start 43200 --upgrade --greedy --cleanup --immediate --sudo
 
 # Wait a bit before moving on...
 sleep 1
@@ -229,7 +234,7 @@ brew install --cask --appdir="/Applications" iterm2
 # brew install --cask --appdir="/Applications" spectacle
 # brew install --cask --appdir="/Applications" betterzip
 # brew install --cask --appdir="/Applications" suspicious-package
-brew install --cask --appdir="/Applications" apparency
+# brew install --cask --appdir="/Applications" apparency
 # brew install --cask --appdir="/Applications" autopkgr
 brew install --cask --appdir="/Applications" munkiadmin
 brew install --cask --appdir="/Applications" mactracker
